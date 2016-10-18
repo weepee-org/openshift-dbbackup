@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function backupDB{
+function backupDB {
 
     # move to backup folder
     cd /data/backup;
