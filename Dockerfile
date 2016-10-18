@@ -14,7 +14,7 @@ ENTRYPOINT ["/scripts/backup.sh"]
 
 # Set labels used in OpenShift to describe the builder images
 LABEL io.k8s.description="DB Backup" \
-      io.k8s.display-name="DB Bacup" \
+      io.k8s.display-name="DB Backup" \
       io.openshift.expose-services="" \
       io.openshift.min-memory="1Gi" \
       io.openshift.min-cpu="1" \
