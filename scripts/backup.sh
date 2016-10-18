@@ -29,7 +29,7 @@ function checkTimeAndBackupIfMatched {
     CUR_HOUR=$(date +"%H");
     CUR_MIN=$(date +"%M");
 
-    #get time input
+    #split time in array
     set -- "$TIME";
     IFS=":"; declare -a REQUESTED_TIME=($*);
 
