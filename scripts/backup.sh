@@ -25,7 +25,7 @@ function checkTimeAndBackupIfMatched {
     set -- "$TIME";
     IFS=":"; declare -a REQUESTED_TIME=($*);
 
-    if [[ ${REQUESTED_TIME[0]} -eq CUR_HOUR && ${REQUESTED_TIME[0]} -eq CUR_MIN ]]
+    if [[ ${REQUESTED_TIME[0]} -eq CUR_HOUR && ${REQUESTED_TIME[1]} -eq CUR_MIN ]]
     then
         backupDB;
     fi
