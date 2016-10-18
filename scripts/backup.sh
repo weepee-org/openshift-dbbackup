@@ -10,7 +10,7 @@ function backupDB {
     then
         mysqldump -u $DB_USER -p$($DB_PASSWORD) -h $MYSQL_SERVICE_HOST $DB_NAME | gzip -c > $(date +%Y-%m-%d-%H.%M.%S).sql.gz;
     else
-        pg_dump -h  -Fc $DB_NAME > $(date +%Y-%m-%d-%H.%M.%S).dump
+        PGPASSWORD=$($DB_PASSWORD) pg_dump -h $POSTGRESQL_SERVICE_HOST -Fc $DB_NAME > $(date +%Y-%m-%d-%H.%M.%S).dump
     fi
 
     #delete oldest backup file
