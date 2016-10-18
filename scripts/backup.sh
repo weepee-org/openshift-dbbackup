@@ -8,13 +8,21 @@ function backupDB {
     # dump DB
     if [[ $DB_TYPE -eq 'MYSQL' ]]
     then
-        mysqldump -u $DB_USER -p$($DB_PASSWORD) -h $MYSQL_SERVICE_HOST $DB_NAME | gzip -c > $(date +%Y-%m-%d-%H.%M.%S).sql.gz;
+        MYSQL_PWD=$DB_PASSWORD mysqldump -u $DB_USER -h $MYSQL_SERVICE_HOST $DB_NAME | gzip -c > $(date +%Y-%m-%d-%H.%M.%S).sql.gz;
     else
-        PGPASSWORD=$($DB_PASSWORD) pg_dump -h $POSTGRESQL_SERVICE_HOST -Fc $DB_NAME > $(date +%Y-%m-%d-%H.%M.%S).dump
+        PGPASSWORD=$DB_PASSWORD pg_dump -h $POSTGRESQL_SERVICE_HOST -Fc $DB_NAME > $(date +%Y-%m-%d-%H.%M.%S).dump
     fi
 
+    #count files
+    NMBFILES=$(ls 2>/dev/null -Ub1 -- * | wc -l);
+
     #delete oldest backup file
-    rm "$(ls -t | tail -1)";
+    if [[ $NMBFILES > 1 ]]
+    then
+        rm "$(ls -t | tail -1)";
+    fi
+
+    echo "`date`: Took DB backup"
 }
 
 function checkTimeAndBackupIfMatched {
@@ -35,7 +43,7 @@ function checkTimeAndBackupIfMatched {
 
 function backupAndSetSleep {
     backupDB;
-    sleep $($TIME)m;
+    sleep "$TIME"m;
 }
 
 # cron stuf
