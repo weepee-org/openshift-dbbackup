@@ -45,6 +45,6 @@ do
     then
         checkTimeAndBackupIfMatched;
     else
-        executeAndSetSleep;
+        backupAndSetSleep;
     fi
 done
