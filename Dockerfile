@@ -4,7 +4,7 @@ MAINTAINER Toon van Dooren <toon@weepee.io>
 ADD scripts/backup.sh /scripts/backup.sh
 
 RUN apk upgrade && \
- apk add --update bash postgresql-client mysql-client \
+ apk add --update bash postgresql-client mysql-client && \
  chmod -R a+rx /scripts && \
  rm -f /var/cache/apk/*
 
