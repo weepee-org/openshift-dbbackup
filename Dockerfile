@@ -12,7 +12,7 @@ RUN apk upgrade && \
 
 WORKDIR /scripts
 
-ENTRYPOINT ["/scripts/backup.sh"]
+ENTRYPOINT ["/scripts/run.sh"]
 
 # Set labels used in OpenShift to describe the builder images
 LABEL io.k8s.description="DB Backup" \

@@ -14,7 +14,7 @@ function backupDB {
     fi
 
     #count files
-    NMBFILES=$(ls 2>/dev/null -Ub1 -- * | wc -l);
+    NMBFILES=$(ls | wc -l);
 
     #delete oldest backup file
     if [[ $NMBFILES > 1 ]]
