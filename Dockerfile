@@ -4,7 +4,9 @@ MAINTAINER Toon van Dooren <toon@weepee.io>
 ADD scripts/backup.sh /scripts/backup.sh
 
 RUN apk upgrade && \
- apk add --update bash postgresql-client mysql-client && \
+ apk add --update bash postgresql-client mysql-client tzdata && \
+ cp /usr/share/zoneinfo/Europe/Brussels /etc/localtime && \
+ echo "Europe/Brussels" > /etc/timezone && \
  chmod -R a+rx /scripts && \
  rm -f /var/cache/apk/*
 
