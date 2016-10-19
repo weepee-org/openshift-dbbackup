@@ -1,7 +1,7 @@
 FROM alpine:3.4
 MAINTAINER Toon van Dooren <toon@weepee.io>
 
-ADD scripts/backup.sh /scripts/backup.sh
+ADD scripts /scripts/
 
 RUN apk upgrade && \
  apk add --update bash postgresql-client mysql-client tzdata && \
