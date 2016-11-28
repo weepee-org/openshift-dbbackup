@@ -3,7 +3,7 @@
 function backupDB {
 
     # move to backup folder
-    cd /data/backup;
+    cd $BACKUP_PATH;
 
     # dump DB
     if [[ $DB_TYPE -eq 'MYSQL' ]]
